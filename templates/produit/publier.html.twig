@@ -32,8 +32,18 @@
                 <td>{{ produit.image }}</td>
             </tr>
         </tbody>
-    </table>
-
+    </table> 
+    {% if is_granted('ROLE_USER') %}
+    
+<a href="{{path('cart_add', {'id': produit.id}) }}" class="btn btn-success float-right">
+                        <i class="fas fa-shopping-cart mr-1"></i>
+                        Ajouter
+                    </a>
+                    {% else %}
+                    <p> vous devez vous connecter pour rajouter ce produit dans votre panier <a href="/login">connectez-vous</p>
+                    {% endif %}
+                    
+                        
     <a href="{{ path('produit_index') }}">retourner</a>
     <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
     

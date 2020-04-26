@@ -17,6 +17,12 @@
                 <a class="nav-link" href="{{ path('moncompte') }}">Mon espace</a>
             </li>
         </ul>
+        {% if is_granted('ROLE_USER') %}
+        
+        <a href="/logout"> Se déconnecter </a>
+        {% else %}
+            <a href="/login">Se connecter </a>
+        {% endif %}
         
     </div>
 </nav>
