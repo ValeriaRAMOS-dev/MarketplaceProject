@@ -3,7 +3,7 @@
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-
+{% if is_granted('ROLE_USER') %}{% endif %}
 
     <h1>Produit index</h1>
 
@@ -20,7 +20,6 @@
             </tr>
         </thead>
         <tbody>
-        {% if is_granted('ROLE_USER') %}
         {% for produit in produits %}
             <tr>
                 <td>{{ produit.id }}</td>
@@ -39,16 +38,8 @@
                 <td>pas de produit</td>
             </tr>
         {% endfor %}
-        
         </tbody>
     </table>
 
     <a href="{{ path('produit_new') }}">creer nouveau</a>
-    <br> <br>
-    <a href="/logout"> Se deconnecter </a>
-    {% else %}
-        <h1> Vous devez être connecter pour acceder a la liste des produits ! </h1>
-        <a href="/register"> s'inscrire </a>
-    {% endif %}
-
 {% endblock %}
