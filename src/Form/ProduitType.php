@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-
 use App\Entity\Produit;
 
 use Symfony\Component\Form\AbstractType;
