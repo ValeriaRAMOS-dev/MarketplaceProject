@@ -17,7 +17,7 @@ class Panier
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\utilisateur", inversedBy="panier", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Utilisateur", inversedBy="panier", cascade={"persist", "remove"})
      */
     private $utilisateur;
 

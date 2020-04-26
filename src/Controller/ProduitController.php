@@ -49,7 +49,7 @@ class ProduitController extends AbstractController
                     return $this->redirectToRoute('produit_index');
                 }
 
-                $produit->setPhoto($nomFichier);
+                $produit->setImage($nomFichier);
             }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($produit);
@@ -85,7 +85,27 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $fichier = $form->get('image')->getData();
+
+            if($fichier){
+                $nomFichier = uniqid() .'.'. $fichier->guessExtension();
+                try{
+                    $fichier->move(
+                        $this->getParameter('upload_dir'),
+                        $nomFichier
+                    );
+                }
+                catch(FileException $e){
+                    $this->addFlash("danger", "l'image marche pas frere",
+                 );
+                    return $this->redirectToRoute('produit_index');
+                }
+
+                $produit->setImage($nomFichier);
+            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($produit);
+            $entityManager->flush();
 
             return $this->redirectToRoute('produit_index');
         }
