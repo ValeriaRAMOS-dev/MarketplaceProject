@@ -18,13 +18,6 @@ class ProduitType extends AbstractType
         ->add('description')
         ->add('price')
         ->add('stock')
-<<<<<<< HEAD
-        ->add('image')
-       
-        
-        
-        ;        
-=======
         ->add('image', FileType::class, [
             'label' => 'image',
 
@@ -47,7 +40,6 @@ class ProduitType extends AbstractType
                 ])
             ],
         ]);        
->>>>>>> ac03925c9555c13481e3950806cefe680d2593f1
             
      }
     public function configureOptions(OptionsResolver $resolver)

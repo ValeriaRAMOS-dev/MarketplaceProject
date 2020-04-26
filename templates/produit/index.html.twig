@@ -3,7 +3,6 @@
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-{% if is_granted('ROLE_USER') %}{% endif %}
 
     <h1>Produit index</h1>
 
@@ -40,28 +39,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <div class="row">
-        {% for produit in produits %}
-            <div class="col-4 mt-4">
-                <div class="border border-dark rounded p-2 clearfix">
-                    <h2>
-                        {{ produit.name }}
-                        -
-                        {{ produit.price }}
-                        €
-                    </h2>
-                    {#<img class="img-fluid rounded" src="{{ product.image }}" alt="Image de {{ product.title }}">"#}
-                    <hr>
-                    <a href="{{path('cart_add', {'id': produit.id}) }}" class="btn btn-success float-right">
-                        <i class="fas fa-shopping-cart mr-1"></i>
-                        Ajouter
-                    </a>
-                </div>
-
-            </div>
-        {% endfor %}
-    </div>
 
     <a href="{{ path('produit_new') }}">creer nouveau</a>
 {% endblock %}
