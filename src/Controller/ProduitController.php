@@ -51,6 +51,8 @@ class ProduitController extends AbstractController
      */
     public function show(Produit $produit): Response
     {
+
+        
         return $this->render('produit/publier.html.twig', [
             'produit' => $produit,
         ]);
@@ -89,4 +91,6 @@ class ProduitController extends AbstractController
 
         return $this->redirectToRoute('produit_index');
     }
+
+    
 }

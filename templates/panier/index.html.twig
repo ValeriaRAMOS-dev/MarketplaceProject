@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+
+<h1>Votre panier</h1>
+    {% if items | length > 0 %} {# on met un filtre length qui va transformer notre tableau des items en une longueur #}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.produit.name }}</td>
+                <td>{{ item.produit.price}}</td>
+                <td>{{ item.quantity}}</td>
+                <td>{{ item.produit.price * item.quantity }}</td> {# ici on calcul le total : la quantité fois le prix du produit #}
+                <td>
+                    <a href="{{ path('cart_remove', {'id': item.produit.id }) }}" class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+           
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total : </td>
+                <td>{{ total }}</td>
+                <td></td>
+        </tfoot>
+
+    </table>
+
+        
+    {% else %}
+        <p>Surprise , c'est vide </p>
+    {% endif %}
+
+{% endblock %}

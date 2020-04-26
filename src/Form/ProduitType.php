@@ -20,6 +20,7 @@ class ProduitType extends AbstractType
         ->add('price')
         ->add('stock')
         ->add('image')
+       
         
         
         ;        
