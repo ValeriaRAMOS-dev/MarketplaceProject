@@ -27,7 +27,7 @@
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.price }}</td>
                 <td>{{ produit.stock }}</td>
-                <td>{{ produit.image }}</td>
+                <td><img src="{{ asset('/uploads/'~produit.image) }}" style="width: 200px"></td>
                 <td>
                     <a href="{{ path('produit_show', {'id': produit.id}) }}">voir</a>
                     <a href="{{ path('produit_edit', {'id': produit.id}) }}">editer</a>
