@@ -44,8 +44,11 @@
     </table>
 
     <a href="{{ path('produit_new') }}">creer nouveau</a>
+    <br> <br>
+    <a href="/logout"> Se deconnecter </a>
     {% else %}
         <h1> Vous devez être connecter pour acceder a la liste des produits ! </h1>
+        <a href="/register"> s'inscrire </a>
     {% endif %}
 
 {% endblock %}

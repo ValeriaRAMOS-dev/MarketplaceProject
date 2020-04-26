@@ -24,7 +24,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = '/';
+    public const LOGIN_ROUTE = 'app_login';
 
     private $entityManager;
     private $urlGenerator;
@@ -41,7 +41,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
 
     public function supports(Request $request)
     {
-        return self::LOGIN_ROUTE === $request->attributes->get('/')
+        return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -96,7 +96,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('/'));
+        return new RedirectResponse($this->urlGenerator->generate('produit_index'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
