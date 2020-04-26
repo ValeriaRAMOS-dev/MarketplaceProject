@@ -6,10 +6,14 @@
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.Nom) }}
+        {{ form_row(registrationForm.Prenom) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button class="btn">Register</button>
+        <button class="btn btn-primary">Register</button>
     {{ form_end(registrationForm) }}
+
+    <h4> i have already an account go to <a href="/login">login</a> </h4>
 {% endblock %}
